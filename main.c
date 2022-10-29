@@ -2,6 +2,7 @@
 #include "freertos/task.h"
 #include "driver/gpio.h"
 #include "sdkconfig.h"
+#include <stdlib.h>
 
 #define dit 1
 #define dah 3
@@ -24,9 +25,7 @@ void msignal(int amount)
         vTaskDelay(clock / portTICK_PERIOD_MS); // wait 100 ms
     }
     space();
-    space();
-    space();
-};
+}
 
 void nextChar()
 {
@@ -134,15 +133,6 @@ void morseK()
 {
     msignal(dah);
     msignal(dit);
-    msignal(dah);
-    nextChar();
-}
-
-void morseJ()
-{
-    msignal(dit);
-    msignal(dah);
-    msignal(dah);
     msignal(dah);
     nextChar();
 }
@@ -368,6 +358,10 @@ void morse9()
     msignal(dah);
     msignal(dit);
     nextChar();
+}
+
+void translateMessage() {
+
 }
 
 void app_main()
